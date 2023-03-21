@@ -13,38 +13,42 @@ def encoder(password):
         if element == 12:
             element = 2
         encoded_password += str(element)
-
-    print(encoded_password)
-
     return encoded_password
 
-def decoder():
-    pass
+def decoder(encoded_password):
+    decoded_password = ""
+    for element in encoded_password:
+        val = int(element) - 3
+        if val <= 0:
+            val += 10
+        decoded_password += str(val)
+    return decoded_password
+
 
 if __name__ == "__main__":
-
-    print("Menu")
-    print("-------------")
-    print("1. Encode")
-    print("2. Decode")
-    print("3. Quit")
-
-
-    option = input("Please enter an option: ")
+    while True:
+        print("Menu")
+        print("-------------")
+        print("1. Encode")
+        print("2. Decode")
+        print("3. Quit")
 
 
-    if option == "1":
-        password = input("Please enter your password to encode: ")
-        encoded_password = encoder(password)
-        print("Your password has been encoded and stored!")
+        option = input("Please enter an option: ")
 
 
-    if option == "2":
-        print(f"The encoded password is {encoded_password}, and the original password is ")
-        pass
+        if option == "1":
+            password = input("Please enter your password to encode: ")
+            encoded_password = encoder(password)
+            print("Your password has been encoded and stored!")
 
 
-    if option == "3":
-        exit()
+        if option == "2":
+            print(f"The encoded password is {encoded_password}, and the original password is {decoder(encoded_password)}")
+            pass
+
+
+        if option == "3":
+            break
 
 
